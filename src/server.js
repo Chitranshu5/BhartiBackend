@@ -1,7 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import path from "path";
-import cors from "cors"
+import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { connectDB } from "./lib/db.js";
@@ -16,9 +16,13 @@ app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://prismatic-axolotl-69652b.netlify.app",
+    origin: [
+      "https://prismatic-axolotl-69652b.netlify.app", // your deployed site
+      "http://localhost:5173", // your local Vite dev server
+    ],
+
     credentials: true, // only if you use cookies
-  })
+  }),
 );
 
 app.use("/api/auth", authRoutes);

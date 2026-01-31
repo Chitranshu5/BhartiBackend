@@ -9,10 +9,14 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://prismatic-axolotl-69652b.netlify.app",
+    origin: [
+      "https://prismatic-axolotl-69652b.netlify.app", // your deployed site
+      "http://localhost:5173"                          // your local Vite dev server
+    ],
     credentials: true,
   },
 });
+
 
 
 // apply authentication middleware to all socket connections
