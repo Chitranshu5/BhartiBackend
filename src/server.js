@@ -22,6 +22,15 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
+app.get("/", (req, res) => {
+  try {
+    res.status(200).json({ message: "Server is running 🚀" });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong", error });
+  }
+});
+
+
 // make ready for deployment
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
