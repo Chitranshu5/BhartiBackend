@@ -9,10 +9,11 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [ENV.CLIENT_URL],
+    origin: "https://prismatic-axolotl-69652b.netlify.app",
     credentials: true,
   },
 });
+
 
 // apply authentication middleware to all socket connections
 io.use(socketAuthMiddleware);
