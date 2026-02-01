@@ -18,7 +18,6 @@ app.use(
   cors({
     origin: [
       "https://prismatic-axolotl-69652b.netlify.app", // your deployed site
-      "http://localhost:5173", // your local Vite dev server
     ],
 
     credentials: true, // only if you use cookies

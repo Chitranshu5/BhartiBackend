@@ -8,17 +8,16 @@ export const generateToken = (userId, res) => {
   }
 
   const token = jwt.sign({ userId }, JWT_SECRET, {
-    expiresIn: "7d",
+    expiresIn: "365d",
   });
 
 res.cookie("jwt", token, {
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  maxAge: 365 * 24 * 60 * 60 * 1000, // 365 days
   sameSite: "none",                 // allows cross-site cookies
-  secure: true,                      // required when sameSite is "none"
+  secure: true,                     // required when sameSite is "none"
 });
+
 
   return token;
 };
 
-// http://localhost
-// https://dsmakmk.com
