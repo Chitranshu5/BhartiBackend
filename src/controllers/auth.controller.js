@@ -23,28 +23,28 @@ export const signup = async (req, res) => {
       return res.status(400).json({ message: "Invalid email format" });
     }
 
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return res.status(400).json({ message: "Email already exists" });
-    }
+    // const userExists = await User.findOne({ email });
+    // if (userExists) {
+    //   return res.status(400).json({ message: "Email already exists" });
+    // }
 
-    const newUser = new User({
-      fullName,
-      email,
-      password,
-    });
+    // const newUser = new User({
+    //   fullName,
+    //   email,
+    //   password,
+    // });
 
-    const savedUser = await newUser.save();
+    // const savedUser = await newUser.save();
 
-    // issue auth cookie AFTER saving user
-    generateToken(savedUser._id, res);
+    // // issue auth cookie AFTER saving user
+    // generateToken(savedUser._id, res);
 
-    res.status(201).json({
-      _id: savedUser._id,
-      fullName: savedUser.fullName,
-      email: savedUser.email,
-      profilePic: savedUser.profilePic,
-    });
+    // res.status(201).json({
+    //   _id: savedUser._id,
+    //   fullName: savedUser.fullName,
+    //   email: savedUser.email,
+    //   profilePic: savedUser.profilePic,
+    // });
   } catch (error) {
     console.error("Error in signup controller:", error);
     res.status(500).json({ message: "Internal server error" });
