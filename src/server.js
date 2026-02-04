@@ -17,11 +17,12 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "https://prismatic-axolotl-69652b.netlify.app", // your deployed site
+      "https://prismatic-axolotl-69652b.netlify.app", // deployed site
+      "http://localhost:5173",                       // Vite local                      // Vite alt
+      "http://localhost:5174",                       // optional
     ],
-
-    credentials: true, // only if you use cookies
-  }),
+    credentials: true,
+  })
 );
 
 app.use("/api/auth", authRoutes);
@@ -31,16 +32,8 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Server is running 🚀" });
 });
 
-// make ready for deployment
-// if (ENV.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-//   app.get("*", (_, res) => {
-//     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-//   });
-// }
-
-server.listen(PORT, () => {
-  console.log("Server running on port: " + PORT);
+server.listen(3000, () => {
+  console.log("Server running on port: " + 3000);
   connectDB();
 });

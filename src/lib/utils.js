@@ -3,6 +3,7 @@ import { ENV } from "./env.js";
 
 export const generateToken = (userId, res) => {
   const { JWT_SECRET } = ENV;
+
   if (!JWT_SECRET) {
     throw new Error("JWT_SECRET is not configured");
   }
@@ -11,13 +12,9 @@ export const generateToken = (userId, res) => {
     expiresIn: "365d",
   });
 
-res.cookie("jwt", token, {
-  maxAge: 365 * 24 * 60 * 60 * 1000, // 365 days
-  sameSite: "none",                 // allows cross-site cookies
-  secure: true,                     // required when sameSite is "none"
-});
-
+  res.cookie("jwt", token, {
+    maxAge: 365 * 24 * 60 * 60 * 1000, // 365 days
+  });
 
   return token;
 };
-
