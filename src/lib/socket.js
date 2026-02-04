@@ -7,18 +7,17 @@ import { socketAuthMiddleware } from "../middleware/socket.auth.middleware.js";
 const app = express();
 const server = http.createServer(app);
 
+
+
 const io = new Server(server, {
   cors: {
     origin: [
-      "https://prismatic-axolotl-69652b.netlify.app", // deployed site
-      "http://localhost:5173",                       // Vite local
-      "http://127.0.0.1:5173",                       // Vite local (alt)
-      "http://localhost:5174",                       // optional
+      "https://prismatic-axolotl-69652b.netlify.app",
+      "http://localhost:5173",
     ],
     credentials: true,
   },
 });
-
 
 
 

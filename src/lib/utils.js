@@ -12,9 +12,13 @@ export const generateToken = (userId, res) => {
     expiresIn: "365d",
   });
 
-  res.cookie("jwt", token, {
-    maxAge: 365 * 24 * 60 * 60 * 1000, // 365 days
-  });
+res.cookie("jwt", token, {
+  httpOnly: true,
+  secure: true,        // REQUIRED on Railway (HTTPS)
+  sameSite: "none",    // REQUIRED for Netlify → Railway
+  maxAge: 365 * 24 * 60 * 60 * 1000,
+});
+
 
   return token;
 };
