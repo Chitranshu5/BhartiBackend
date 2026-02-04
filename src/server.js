@@ -26,9 +26,6 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Server is running 🚀" });
-});
 
 
 server.listen(3000, () => {
